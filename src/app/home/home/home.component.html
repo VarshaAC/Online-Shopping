@@ -1,0 +1,293 @@
+<!-- Modal -->
+<div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="w-100 pt-1 mb-5 text-right">
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <form action="" method="get" class="modal-content modal-body border-0 p-0">
+      <div class="input-group mb-2">
+        <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+        <button type="submit" class="input-group-text bg-success text-light">
+          <i class="fa fa-fw fa-search text-white"></i>
+        </button>
+      </div>
+    </form>
+  </div>  
+</div>
+
+<!--  Main Slider-->
+
+<div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel"
+  (slide.bs.carousel)="resetAnimation()">
+  <ol class="carousel-indicators theme-color-carousel">
+    <li *ngFor="let item of mainSliders; let i = index" [attr.data-bs-target]="'#template-mo-zay-hero-carousel'"
+      [attr.data-bs-slide-to]="i" [class.active]="i === 0"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div *ngFor="let item of mainSliders; let i = index" class="carousel-item main-slider-show" [class.active]="i === 0"
+      [style.background-image]="'url(' + item.imageUrl[0] + ')'" style="background-size: cover; height : 80vh">
+      
+       <!-- Delete Button -->
+       <i *ngIf="userData && userData.isAdmin" 
+       class="bi bi-trash position-absolute top-0 end-0 m-3 cursor-pointer text-danger"
+       (click)="openConfirmationForMainSliderDelete(item, i)" 
+       style="font-size: 24px;">
+     </i>
+      <div class="container main-slider-text" style="margin-top: 18%; margin-left: 0%; align-content: flex-start;">
+        <div class="row ">
+          <div class="col-md-8 col-lg-6">
+            <div class="text-center">
+              <h1 class="h1 fade-in" [innerHTML]="item.title"></h1>
+              <h3 class="h2 fade-in" [innerHTML]="item.subTitle"></h3>
+              <div >
+                 <a routerLink="/shop">
+                  <p class="fade-in shop-now">Shop Now</p>
+                 </a> 
+              </div>
+             </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--  Main Slider end-->
+  <!-- Banner -->
+  <div class="sec-banner bg0 p-t-80 p-b-50">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-xl-4 p-b-30 m-lr-auto sec-banner-mobile-view" *ngFor="let category of categories; let i = index">
+          <!-- Block1 -->
+          <div class="block1 wrap-pic-w position-relative " (click)="goToShop()">
+            <img [src]="category.imageUrl" >
+            <a class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+              <div class="block1-txt-child1 flex-col-l" style="justify-content: center; align-items: center;">
+                <span class="block1-name ltext-102 trans-04 p-b-8">
+                  {{ category.title }}
+                </span>
+              </div>
+            </a>
+            <!-- Delete Button -->
+            <i *ngIf="userData && userData.isAdmin" 
+              class="bi bi-trash position-absolute top-0 end-0 m-3 cursor-pointer text-danger"
+              (click)="openConfirmationForDelete(category, i)" 
+              style="font-size: 20px;"
+            ></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+
+    <!-- Start Categories of The Month -->
+    <!-- <section class="container py-5">
+      <div class="row text-center pt-3">
+        <div class="col-lg-6 m-auto">
+          <h1 class="h1 theme-color">Categories of The Month</h1>
+          <p class="theme-color-secondary">
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+            deserunt mollit anim id est laborum.
+          </p>
+        </div>
+      </div> -->
+      <!-- <div class="row">
+        <div *ngFor="let categorie of categories; let i = index" class="col-12 col-md-4 p-5 mt-3" style="text-align: center;">
+          <a [routerLink]="'/shop'" class="image-container">
+            <img [src]="categorie.imageUrl" class="img-fluid border">
+            <div class="category-overlay">
+              <h5 *ngIf="!isAdmin" class="text-center mt-3 mb-3">Shop Now</h5>     
+              <div *ngIf="isAdmin" class="center-buttons position-absolute bottom-1 start-50 translate-middle-x">
+                <ul class="list-unstyled"> -->
+                  <!-- <li><a class="btn theme-color-button text-white" href="shop.html"><i class="fas fa-trash"></i></a></li> -->
+                  <!-- <li><a class="btn theme-color-button text-white mt-2" routerLink="/shop"><i class="far fa-eye"></i></a></li> -->
+                  <!-- <li><a class="btn theme-color-button text-white mt-2" href="shop.html"><i class="fas fa-cart-plus"></i></a></li> -->
+                <!-- </ul>
+              </div>
+            </div>
+          </a>
+          <p class="text-center"><a [routerLink]="'/shop'" class="btn theme-color-button">Go Shop</a></p>
+        </div>
+      </div>
+    </section> -->
+    
+  <!-- End Categories of The Month -->
+<!-- Product Category-->
+ <!-- <div class="container py-5">
+  <div class="row text-center pt-3">
+    <div class="col-lg-6 m-auto">
+      <h1 class="h1">Categories of The Month</h1>
+      <p>
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+        deserunt mollit anim id est laborum.
+      </p>
+    </div>
+  </div>
+  
+
+  <div class="d-none d-md-block"> 
+    <div id="categories-carousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div *ngFor="let categorie of categories; let i = index" class="carousel-item" [class.active]="i === 0">
+
+          <div class="row justify-content-center text-center">
+            <div class="col-6 col-md-4 p-3 mt-3" *ngFor="let categorie of categories.slice(i, i + 3)">
+              <a [routerLink]="'/shop'" class="image-container">
+                <img [src]="categorie.imageUrl" class="img-fluid border">
+                <div class="category-overlay">
+                    <h5 *ngIf="!isAdmin" class="text-center mt-3 mb-3">Shop Now</h5>     
+                    <div *ngIf="isAdmin" class="center-buttons position-absolute bottom-1 start-50 translate-middle-x">
+                      <ul class="list-unstyled">
+                        <li><a class="btn btn-success text-white" href="shop-single.html"><i class="fas fa-trash"></i></a></li>
+                        <li><a class="btn btn-success text-white mt-2" routerLink="/product" ><i class="far fa-eye"></i></a></li>
+                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
+                      </ul>
+                    </div>
+                </div>
+               
+                </a>
+                <p class="text-center mt-3 mb-3">{{ categorie.title }}</p>
+                <p class="text-center"><a [routerLink]="'/shop'" class="btn btn-success">Go Shop</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#categories-carousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#categories-carousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-2 g-4 d-md-none">
+   
+    <div class="col-6 col-md-4 p-3 mt-3" *ngFor="let category of categories">
+      <a [routerLink]="'/shop'" class="image-container">
+        <img [src]="category.imageUrl" class="img-fluid border">
+        <div class="category-overlay">
+            <h5 class="text-center mt-3 mb-3">Shop Now</h5>
+        </div>
+        
+        </a>
+        <p class="text-center mt-3 mb-3">{{ category.title }}</p>
+        <p class="text-center"><a [routerLink]="'/shop'" class="btn btn-success">Go Shop</a></p>
+    </div>
+
+  </div>
+
+
+
+</div> -->
+
+<!-- Product Category end-->
+
+<!-- Start Categories of The Month -->
+<!--   
+  <section class="container py-5">
+    <div class="row text-center pt-3">
+        <div class="col-lg-6 m-auto">
+            <h1 class="h1">Categories of The Month</h1>
+            <p>
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
+            </p>
+        </div>
+    </div>
+<div class="row justify-content-center text-center">
+    <div class="col-6 col-md-4 p-3 mt-3" *ngFor="let category of categories">
+        <a [routerLink]="'/shop'"><img [src]="category.imageUrl" class="rounded-circle img-fluid border" style="max-height: 200px;"></a>
+        <h5 class="text-center mt-3 mb-3">{{ category.title }}</h5>
+        <p class="text-center"><a [routerLink]="'/shop'" class="btn btn-success">Go Shop</a></p>
+    </div>
+</div>
+
+</section> -->
+
+
+
+
+
+
+
+
+<!-- End Categories of The Month -->
+
+
+
+<!-- Start Featured Product -->
+<!-- <section class="bg-light">
+    <div class="container py-5">
+      <div class="row text-center py-3">
+        <div class="col-lg-6 m-auto">
+          <h1 class="h1">Featured Product</h1>
+          <p>Reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-4 mb-4" *ngFor="let product of featuredProducts">
+          <div class="card h-100">
+            <a routerLink="/product"><img [src]="product.image" class="card-img-top" alt="..."></a>
+            <div class="card-body">
+              <ul class="list-unstyled d-flex justify-content-between">
+                <li>
+                  <i class="text-warning fa fa-star"></i>
+                  <i class="text-warning fa fa-star"></i>
+                  <i class="text-warning fa fa-star"></i>
+                  <i class="text-muted fa fa-star"></i>
+                  <i class="text-muted fa fa-star"></i>
+                </li>
+                <li class="text-muted text-right">${{ product.price }}</li>
+              </ul>
+              <a routerLink="/product" class="h2 text-decoration-none text-dark">{{ product.name }}</a>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia deserunt.</p>
+              <p class="text-muted">Reviews ({{ product.reviews }})</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+
+<!-- Start Article -->
+<section class="py-5 related-prodects">
+    <div class="container">
+        <div class="row text-left p-2 pb-3">
+            <h4 class="theme-color-related-product" style="font-weight: bolder;">Product Overview</h4>
+        </div>
+        <app-filter></app-filter>
+
+        <app-main-product-list></app-main-product-list>
+              
+    </div>
+</section>
+<!-- End Article -->
+
+<app-footer></app-footer>
+<!-- Start Script -->
+<script src="assets/js/jquery-1.11.0.min.js"></script>
+<script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/templatemo.js"></script>
+<script src="assets/js/custom.js"></script>
+
+
+<!-- End Script -->
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var myCarousel = document.getElementById('template-mo-zay-hero-carousel');
+    var carousel = new bootstrap.Carousel(myCarousel);
+  });
+</script>

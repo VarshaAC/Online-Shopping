@@ -1,0 +1,178 @@
+<div class="container d-flex justify-content-center align-items-center"
+    style="height: 90vh;  display: flex; justify-content: center; align-items: center;">
+    <div class="row w-75 shadow-lg rounded">
+        <!-- Left Side: Company Name -->
+        <div
+            class="col-12 col-md-6 bg-primary text-white d-flex flex-column justify-content-center align-items-center rounded-start theme-color">
+            <h1 class="display-6">{{ shopName }}</h1>
+            <p class="text-center d-none d-md-block">Shop me!</p>
+        </div>
+
+        <!-- Right Side: Sign Up Form -->
+        <div class="col-12 col-md-6  p-4 rounded-end">
+            <h3 class="text-center mb-4">Sign Up</h3>
+            <div class="scrollable-container ">
+                <form [formGroup]="signUpForm" (ngSubmit)="onSubmitSignUp()">
+                    <div class="bg-light" style="max-height: 40vh; overflow-y: auto; padding-right: 1rem;">
+                        <!-- First Name -->
+                        <div class="mb-3">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" id="firstName" class="form-control" placeholder="Enter your first name"
+                                formControlName="firstName" required />
+                            <div *ngIf="signUpForm.get('firstName')?.invalid && signUpForm.get('firstName')?.touched"
+                                class="text-danger">
+                                First name is required.
+                            </div>
+                        </div>
+
+                        <!-- Last Name -->
+                        <div class="mb-3">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" id="lastName" class="form-control" placeholder="Enter your last name"
+                                formControlName="lastName" required />
+                            <div *ngIf="signUpForm.get('lastName')?.invalid && signUpForm.get('lastName')?.touched"
+                                class="text-danger">
+                                Last name is required.
+                            </div>
+                        </div>
+
+                        <!-- Email Address -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" id="email" class="form-control" placeholder="Enter your email"
+                                formControlName="email" required />
+                            <div *ngIf="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched"
+                                class="text-danger">
+                                Valid email is required.
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="text" id="phone" class="form-control" placeholder="Enter your phone number"
+                                formControlName="phone" required />
+                            <div *ngIf="signUpForm.get('phone')?.invalid && signUpForm.get('phone')?.touched"
+                                class="text-danger">
+                                Valid phone number is required (10 digits).
+                            </div>
+                        </div>
+
+                        <!-- Birthday -->
+                        <div class="mb-3">
+                            <label for="birthday" class="form-label">Birthday</label>
+                            <input type="date" id="birthday" class="form-control" placeholder="Enter your birthday"
+                                formControlName="birthday" required />
+                            <div *ngIf="signUpForm.get('birthday')?.invalid && signUpForm.get('birthday')?.touched"
+                                class="text-danger">
+                                Birthday is required.
+                            </div>
+                        </div>
+
+                        <!-- Country -->
+                        <div class="mb-3">
+                            <label for="country" class="form-label">Country</label>
+                            <input type="text" id="country" class="form-control" placeholder="Enter your country"
+                                formControlName="country" required />
+                            <div *ngIf="signUpForm.get('country')?.invalid && signUpForm.get('country')?.touched"
+                                class="text-danger">
+                                Country is required.
+                            </div>
+                        </div>
+
+                        <!-- Address 1 -->
+                        <div class="mb-3">
+                            <label for="address1" class="form-label">Address Line 1</label>
+                            <input type="text" id="address1" class="form-control" placeholder="Enter address line 1"
+                                formControlName="address1" required />
+                            <div *ngIf="signUpForm.get('address1')?.invalid && signUpForm.get('address1')?.touched"
+                                class="text-danger">
+                                Address line 1 is required.
+                            </div>
+                        </div>
+
+                        <!-- Address 2 -->
+                        <div class="mb-3">
+                            <label for="address2" class="form-label">Address Line 2</label>
+                            <input type="text" id="address2" class="form-control" placeholder="Enter address line 2"
+                                formControlName="address2" />
+                        </div>
+
+                        <!-- City -->
+                        <div class="mb-3">
+                            <label for="city" class="form-label">City</label>
+                            <input type="text" id="city" class="form-control" placeholder="Enter your city"
+                                formControlName="city" required />
+                            <div *ngIf="signUpForm.get('city')?.invalid && signUpForm.get('city')?.touched"
+                                class="text-danger">
+                                City is required.
+                            </div>
+                        </div>
+
+                        <!-- State -->
+                        <div class="mb-3">
+                            <label for="state" class="form-label">State</label>
+                            <input type="text" id="state" class="form-control" placeholder="Enter your state"
+                                formControlName="state" required />
+                            <div *ngIf="signUpForm.get('state')?.invalid && signUpForm.get('state')?.touched"
+                                class="text-danger">
+                                State is required.
+                            </div>
+                        </div>
+
+                        <!-- Postal Code -->
+                        <div class="mb-3">
+                            <label for="postalCode" class="form-label">Postal Code</label>
+                            <input type="text" id="postalCode" class="form-control" placeholder="Enter your postal code"
+                                formControlName="postalCode" required />
+                            <div *ngIf="signUpForm.get('postalCode')?.invalid && signUpForm.get('postalCode')?.touched"
+                                class="text-danger">
+                                Postal code is required.
+                            </div>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" id="password" class="form-control" placeholder="Enter your password"
+                                formControlName="password" required />
+                            <div *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched"
+                                class="text-danger">
+                                Password is required.
+                            </div>
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" id="confirmPassword" class="form-control"
+                                placeholder="Confirm your password" formControlName="confirmPassword" required />
+                            <div *ngIf="signUpForm.get('confirmPassword')?.invalid && signUpForm.get('confirmPassword')?.touched"
+                                class="text-danger">
+                                Confirm password is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-3 " style="margin-bottom: 5% !important;">
+                        <!-- Sign Up Button -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn theme-color-button" [disabled]="signUpForm.invalid">
+                                Sign Up
+                            </button>
+                        </div>
+
+                        <!-- Link to Login Page -->
+                        <div class="text-center mt-3">
+                            <a href="/login" class="text-decoration-none theme-color-secondary-text">Already have an
+                                account? Login</a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <!-- Link to Login Page -->
+
+        </div>
+    </div>
+</div>

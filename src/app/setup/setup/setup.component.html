@@ -1,0 +1,335 @@
+<div class="container">
+  <h1 class="mt-4 theme-color">Product Details Upload</h1>
+  <form #productForm="ngForm">
+
+    <div class="form-group">
+      <label for="setupOption" class="theme-color">Setup Option</label>
+      <select class="form-control" id="setupOption" name="setupOption" [(ngModel)]="setupOption" required>
+        <option value="" class="theme-color">Select Setup Option</option>
+        <option value="SliderShow" class="theme-color">Main Slider Show</option>
+        <option value="catergories" class="theme-color">Categories</option>
+        <option value="product" class="theme-color">Add product</option>
+        <option value="themeColor" class="theme-color">Set Theme color</option>
+        <option value="shopName" class="theme-color">Set company name</option>
+        <option value="contactDetails" class="theme-color">Set contact details</option>
+      </select>
+    </div>
+
+     <!-- Contact Details Form Group -->
+     <div *ngIf="setupOption == 'contactDetails'" class="contact-details-form">
+      <h2 class="mt-4 theme-color">Contact Details</h2>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" [(ngModel)]="email" required>
+      </div>
+
+      <!-- Phone Number -->
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number" [(ngModel)]="phoneNumber" required>
+      </div>
+
+      <!-- Address -->
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" class="form-control" id="address" name="address" placeholder="Enter Address" [(ngModel)]="address" required>
+      </div>
+
+      <!-- City -->
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" class="form-control" id="city" name="city" placeholder="Enter City" [(ngModel)]="city" required>
+      </div>
+
+      <!-- State -->
+      <div class="form-group">
+        <label for="state">State</label>
+        <input type="text" class="form-control" id="state" name="state" placeholder="Enter State" [(ngModel)]="state" required>
+      </div>
+
+      <!-- Postal Code -->
+      <div class="form-group">
+        <label for="postalCode">Postal Code</label>
+        <input type="text" class="form-control" id="postalCode" name="postalCode" placeholder="Enter Postal Code" [(ngModel)]="postalCode" required>
+      </div>
+
+      <div class="form-group">
+        <label for="country">country</label>
+        <input type="text" class="form-control" id="country" name="country" placeholder="Enter country" [(ngModel)]="country" required>
+      </div>
+
+      
+    </div>
+
+    <!-- Category Form Group -->
+    <div *ngIf="setupOption == 'catergories' " class="category-form">
+      <!-- Category Title -->
+      <div class="form-group">
+        <label for="productName">Name</label>
+        <input type="text" class="form-control" id="productName" name="title" placeholder="Enter Name"
+          [(ngModel)]="title" required>
+      </div>
+
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select class="form-control" id="category" name="category" [(ngModel)]="categoryId" required>
+          <option value="" disabled selected>Select Category</option>
+          <option value="1">Men</option>
+          <option value="2">Women</option>
+          <option value="3">Shoe</option>
+          <option value="4">Accessories</option>
+          <!-- Add more options as needed -->
+        </select>
+      </div>
+
+
+      <!-- Category Image -->
+      <div class="form-group" (drop)="onFilesDropped($event)" (dragover)="onDragOver($event)">
+        <label for="sliderShowImage">Category Images</label>
+
+        <!-- Hidden file input -->
+        <input #fileInput type="file" class="form-control-file" id="sliderShowImage" name="productImage"
+          (change)="onFilesSelected($event)" multiple style="display: none;">
+
+        <!-- Drag-and-drop area with a clickable area to select images -->
+        <div class="drag-drop-area" style="text-align: center;" (click)="fileInput.click()">
+          <p>Drag & drop images here</p>
+          <i class="fas fa-plus"></i>
+          <p>or</p>
+          <button type="button" class="btn btn-primary custom-file-btn">Select Images</button>
+        </div>
+
+        <div class="image-container mt-2">
+          <div *ngFor="let image of showSelectedFiles; let i = index" class="image-wrapper">
+            <img [src]="image.content" alt="Selected Image" class="img-fluid" style="max-width: 200px;">
+
+            <!-- Option to deselect the image -->
+            <button type="button" class="btn btn-danger btn-sm deselect-btn" (click)="deselectImage(i)">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Product Form Group -->
+    <div *ngIf="setupOption == 'product' " class="product-form">
+      <!-- Product Details -->
+      <div class="row">
+        <div class="col-md-6">
+          <!-- Title -->
+          <div class="form-group">
+            <label for="title">Product Name</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Product Name"
+              [(ngModel)]="title" required>
+          </div>
+          <!-- Sub Title -->
+          <!-- <div class="form-group">
+            <label for="subTitle">Sub Title</label>
+            <input type="text" class="form-control" id="subTitle" name="subTitle" placeholder="Enter subTitle"
+              [(ngModel)]="subTitle" required>
+          </div> -->
+
+          <!-- Available colors -->
+          <div class="form-group">
+            <label for="colors">Available Colors</label>
+            <input type="text" class="form-control" id="colors" name="colors" placeholder="Blue/Red/Purple"
+              [(ngModel)]="colors" required>
+          </div>
+          <!-- Description -->
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" placeholder="Enter description"
+              [(ngModel)]="description" rows="4" required></textarea>
+          </div>
+
+           
+
+
+          <!-- Price -->
+          <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" class="form-control" id="price" name="price" placeholder="Enter price"
+              [(ngModel)]="price" required>
+          </div>
+
+        </div>
+        <div class="col-md-6">
+          <!-- Label -->
+          <div class="form-group">
+            <label for="label">Brand</label>
+            <input type="text" class="form-control" id="label" name="label" placeholder="Enter Brand"
+              [(ngModel)]="label" required>
+          </div>
+          <!-- Size -->
+          <div class="form-group">
+            <label for="size">Size</label>
+            <input type="text" class="form-control" id="size" name="size" placeholder="S/M/L/XL" [(ngModel)]="size"
+              required>
+          </div>
+
+          <!-- Description -->
+          <div class="form-group">
+            <label for="specification">Specification</label>
+            <textarea class="form-control" id="specification" name="specification" placeholder="Enter specification"
+              [(ngModel)]="specification" rows="4" required></textarea>
+          </div>
+          <!-- category -->
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select class="form-control" id="category" name="category" [(ngModel)]="categoryId" required>
+              <option value="" disabled selected>Select Category</option>
+              <option value="1">Men</option>
+              <option value="2">Women</option>
+
+              <!-- Add more options as needed -->
+            </select>
+          </div>
+
+           <!-- sub category -->
+           <div class="form-group">
+            <label for="subCategory">Sub Category</label>
+            <select class="form-control" id="subCategory" name="subCategory" [(ngModel)]="subCategoryId" required>
+              <option value="" disabled selected>Select Sub Category</option>
+              <option value="1">Casual</option>
+              <option value="2">Formal</option>
+              <!-- <option value="3">Sport Wear</option> -->
+
+              <!-- Add more options as needed -->
+            </select>
+          </div>
+
+           <!-- Type -->
+           <div class="form-group">
+            <label for="type">Type</label>
+            <select class="form-control" id="type" name="type" [(ngModel)]="typeId" required>
+              <option value="" disabled selected>Select Type</option>
+              <option value="1">T shirt</option>
+              <option value="2">shirt</option>
+              <option value="3">Denim</option>
+              <option value="4">Accessories</option>
+
+              <!-- Add more options as needed -->
+            </select>
+          </div>
+
+
+
+        </div>
+      </div>
+      <!-- Product Image -->
+      <div class="form-group" (drop)="onFilesDropped($event)" (dragover)="onDragOver($event)">
+        <label for="sliderShowImage">Product Images</label>
+
+        <!-- Hidden file input -->
+        <input #fileInput type="file" class="form-control-file" id="sliderShowImage" name="productImage"
+          (change)="onFilesSelected($event)" multiple style="display: none;">
+
+        <!-- Custom drag-drop area with a button to select images -->
+        <div class="drag-drop-area" style="text-align: center;" (click)="fileInput.click()">
+          <p>Drag & drop images here</p>
+          <i class="fas fa-plus"></i>
+          <p>or</p>
+          <button type="button" class="btn btn-primary custom-file-btn">Select Images</button>
+        </div>
+
+        <!-- Image container to show selected images and set default -->
+        <div class="image-container mt-2">
+          <div *ngFor="let image of showSelectedFiles; let i = index" class="image-wrapper">
+            <img [src]="image.content" alt="Selected Image" class="img-fluid" style="max-width: 200px;">
+
+            <!-- Radio button for setting the default image -->
+            <div class="select-button">
+              <input type="radio" name="defaultImage" [value]="i" [(ngModel)]="selectedIndex"> Default
+            </div>
+
+            <!-- Delete button for each image -->
+            <button type="button" class="btn btn-danger btn-sm deselect-btn" (click)="deselectImage(i)">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- SliderShow Form Group -->
+    <div *ngIf="setupOption == 'SliderShow' " class="slider-show-form">
+      <!-- SliderShow Details -->
+      <div class="form-group">
+        <label for="sliderShowTitle">Name</label>
+        <input type="text" class="form-control" id="sliderShowTitle" name="title" placeholder="Enter Name"
+          [(ngModel)]="title" required>
+      </div>
+      <div class="form-group">
+        <label for="sliderShowSubTitle">Small description</label>
+        <input class="form-control" id="sliderShowSubTitle" name="subTitle" placeholder="Enter description"
+          [(ngModel)]="subTitle" required>
+      </div>
+      <!-- <div class="form-group">
+        <label for="sliderShowContent">Content</label>
+        <input type="text" class="form-control" id="sliderShowContent" name="content" placeholder="Enter Content"
+          [(ngModel)]="contant" required>
+      </div> -->
+      <!-- SliderShow Image -->
+      <div class="form-group" (drop)="onFilesDropped($event)" (dragover)="onDragOver($event)">
+        <label for="sliderShowImage">Product Images</label>
+
+        <!-- Hidden file input -->
+        <input #fileInput type="file" class="form-control-file d-none" id="sliderShowImage" name="productImage"
+          (change)="onFilesSelected($event)">
+
+        <!-- Custom styled button for file input -->
+        <div class="drag-drop-area" style="text-align: center;" (click)="fileInput.click()">
+          <p>Drag & drop images here</p>
+          <i class="fas fa-plus"></i>
+          <p>or</p>
+          <button type="button" class="btn btn-primary custom-file-btn">Select Images</button>
+        </div>
+
+        <div class="image-container mt-2">
+          <div *ngFor="let image of showSelectedFiles; let i = index" class="image-wrapper">
+            <img [src]="image.content" alt="Selected Image" class="img-fluid" style="max-width: 200px;">
+            <button type="button" class="btn btn-danger btn-sm deselect-btn" (click)="deselectImage(i)">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    </div>
+
+    <div *ngIf="setupOption == 'themeColor'" class="slider-show-form">
+      <div class="color-picker-container">
+        <label for="primaryColor">Primary Color:</label>
+        <input [(colorPicker)]="primaryColor" (colorPickerChange)="onPrimaryColorChange($event)"
+          [style.background]="primaryColor" type="text" id="primaryColor" />
+
+        <label for="secondaryColor">Secondary Color:</label>
+        <input [(colorPicker)]="secondaryColor" (colorPickerChange)="onSecondaryColorChange($event)"
+          [style.background]="secondaryColor" type="text" id="secondaryColor" />
+      </div>
+    </div>
+
+    <div *ngIf="setupOption == 'shopName'" class="slider-show-form">
+      <div class="form-group">
+        <label for="shopName">Enter Shop Name:</label>
+        <input type="text" class="form-control" id="shopName" name="shopName" placeholder="Enter shopName" [(ngModel)]="shopName" required>
+      </div>
+    </div>
+
+
+    <button *ngIf="this.setupOption!=''" type="button" class="btn theme-color-button" [disabled]="!productForm.valid"
+      (click)="uploadProduct()">Save</button>
+  </form>
+</div>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="color: white"> Loading... </p>
+</ngx-spinner>

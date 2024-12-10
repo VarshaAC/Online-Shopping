@@ -1,0 +1,68 @@
+
+<!-- Add Font Awesome CDN in your index.html for icons -->
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> -->
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <!-- Profile Card -->
+      <div class="col-md-8">
+        <div class="card shadow-lg rounded">
+          <div class="card-body" style="margin-bottom: 20px;">
+            <div class="d-flex justify-content-between">
+              <!-- Left: User's Avatar and Info -->
+              <div class="d-flex">
+                <img src="https://via.placeholder.com/100" alt="User Avatar" class="rounded-circle me-4" style="width: 100px; height: 100px;">
+                <div>
+                  <h3 class="mb-0">{{userData.firstName}} {{userData.lastName}}</h3>
+                  <p class="text-muted">{{userData.email}}</p>
+                </div>
+              </div>
+  
+              <!-- Right: Edit Profile Button -->
+              <!-- <button class="btn  d-flex align-items-center theme-color-button">
+                <i class="fas fa-user-edit me-2 icon-color"></i> Edit Profile
+              </button> -->
+            </div>
+  
+            <hr>
+  
+            <!-- User Details Section -->
+            <h5 class="mt-4">Account Information</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <i class="fas fa-phone-alt me-2 icon-color"></i> <strong>Phone:</strong> {{userData.phone}}
+              </li>
+              <li class="list-group-item">
+                <i class="fas fa-map-marker-alt me-2 icon-color"></i> <strong>Address:</strong> {{userData.address1}},{{userData.address2}},{{userData.postalCode}},{{userData.city}},{{userData.province}},{{userData.country}}
+              </li>
+              <li class="list-group-item">
+                <i class="fas fa-birthday-cake me-2 icon-color"></i> <strong>Birthday:</strong> {{userData.birthday}}
+              </li>
+            </ul>
+
+            <div class="row">
+                <!-- Navigation to Orders -->
+                <div class="col-6 mt-4 button-outlin">
+                  <button class="btn d-flex align-items-center " style=" border-color: var(--primary-color) !important;" (click)="goToOrders()">
+                    <i class="fas fa-box-open me-2 icon-color"></i> 
+                    <span class="theme-color-secondary-text">My Orders</span>
+                  </button>
+                </div>
+              
+                <!-- Logout Button -->
+                <div class="col-6 mt-4 text-end">
+                  <button class="btn d-flex align-items-center theme-secondary-color-button" (click)="logout()">
+                    <i class="fas fa-sign-out-alt me-2 icon-color"></i> 
+                    <span class="icon-color">Logout</span>
+                  </button>
+                </div>
+              </div>
+              
+  
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

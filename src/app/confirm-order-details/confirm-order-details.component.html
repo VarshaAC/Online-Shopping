@@ -1,0 +1,107 @@
+<div class="container mt-4">
+    <div class="card shadow-lg border-0">
+      <div class="card-header text-white d-flex justify-content-between align-items-center theme-color">
+        <h4 class="mb-0">
+          <i class="fas fa-shopping-cart "></i> Order Details
+        </h4>
+        <span class="badge badge-light text-dark" style="color: white !important;">Order ID: {{ order.orderId }}</span>
+      </div> 
+      <div class="card-body">
+        <!-- Customer Information -->
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <h5><i class="fas fa-user"></i> Customer Information</h5>
+            <ul class="list-unstyled">
+              <li><strong>Name:</strong> {{ order.customerDetails.name }}</li>
+              <li><strong>Email:</strong> {{ order.customerDetails.email }}</li>
+              <li><strong>Phone:</strong> {{ order.customerDetails.phone }}</li>
+              <li><strong>Address:</strong> {{ order.customerDetails.streetAddress}}</li>
+              <li><strong>postalCode:</strong> {{ order.customerDetails.postalCode}}</li>
+              <li><strong>city:</strong> {{ order.customerDetails.city}}</li>
+              <li><strong>country:</strong> {{ order.customerDetails.country}}</li>
+
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h5><i class="fas fa-receipt"></i> Order Information</h5>
+            <ul class="list-unstyled">
+              <li><strong>Order Date:</strong> {{ convertToDate(order.createdAt) | date }}</li>
+              <li><strong>Payment Method:</strong> {{ order.paymentMethod }}</li>
+              <li>
+                <strong>Status:</strong>
+                <span [class]="'badge ' + getStatusBadgeClass(order.cardItems[0].status)">
+                    {{ order.cardItems[0].status }}
+                  </span>
+                  <select 
+                  class="form-control custom-select w-50" 
+                  style="width: 200px; margin-top: 10px;" 
+                  [(ngModel)]="order.cardItems[0].status" 
+                  (change)="onStatusChange(order)">
+                  <option value="Pending">Pending</option>
+                  <option value="Processing">Processing</option>
+                  <option value="Shipped">Shipped</option>
+                  <option value="Delivered">Delivered</option>
+                  <option value="Cancelled">Cancelled</option>
+                </select>
+                
+                
+              </li>
+            </ul>
+          </div>
+        </div>
+  
+        <!-- Products Table -->
+        <h5 class="mt-4"><i class="fas fa-box"></i> Products</h5>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead class="bg-light">
+              <tr>
+                <th>#</th>
+                <th>Image</th>
+                <th>Product Name</th>
+                <th>size</th>
+                <th>color</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of order.cardItems; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>
+                  <img
+                    [src]="product.image"
+                    alt="{{ product.name }}"
+                    class="img-thumbnail"
+                    width="60"
+                  />
+                </td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.size }}</td>
+                <td>{{ product.color }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>Rs: {{ product.price}}</td>
+                <td>Rs: {{ product.quantity * product.price}}</td>
+                <td>
+                    <button class="btn btn-outline-primary btn-sm"  (click)="viewOrderDetails(product.id)">
+                        <i class="fas fa-eye"></i> View
+                      </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+        <!-- Total Amount -->
+        <div class="text-right mt-4">
+          <h5>
+            <strong>Total Amount: </strong>
+            Rs: {{getTotalAmount(order)}}
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  

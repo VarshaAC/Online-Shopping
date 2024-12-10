@@ -1,0 +1,177 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    max-height: 90%;;
+    text-align: center; /* Aligns all content inside the container to center */
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left; /* Reset text alignment for form elements */
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.image-wrapper {
+    position: relative;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+  
+
+.deselect-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 0;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+  
+  .deselect-btn i {
+    color: red;
+  }
+  
+  .img-fluid {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  .image-picker {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-picker-label {
+  display: inline-block;
+  width: 200px; /* Set width and height for the image picker */
+  height: 200px;
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.image-picker-label i {
+  font-size: 48px;
+  color: #ccc;
+}
+
+.image-picker-label img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.drag-drop-area {
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.drag-drop-area p {
+  margin-bottom: 10px;
+}
+
+.select-button {
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    margin: auto; /* Center horizontally */
+}
+
+.theme-color {
+  color: var(--primary-color) !important;
+}
+
+.theme-color-button {
+  background-color: var(--primary-color) !important;
+  color : white;
+  margin-top:  40px;
+  margin-bottom: 80px;
+  min-width: 100% !important;
+  /* color: var(--secondary-color) !important; */
+}
+
+.drag-drop-area {
+  border: 2px dashed #007bff;
+  padding: 20px;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.drag-drop-area:hover {
+  border-color: #0056b3;
+}
+
+.custom-file-btn {
+  margin-top: 10px;
+  color: #fff;
+}
+
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+}
+
+.deselect-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #dc3545;
+  border: none;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+
+.color-picker-container {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.color-picker-container label {
+  margin: 5px 0;
+}
+
+input {
+  width: 100%;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+

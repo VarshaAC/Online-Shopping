@@ -1,0 +1,67 @@
+<div class="container my-4">
+  <div class="row">
+    <!-- Cart Items Section -->
+    <div class="col-lg-7 col-12 mb-4" >
+      <div *ngIf="cartItems.length">
+        <div
+          class="card mb-3 shadow-sm cart-item"
+          *ngFor="let product of cartItems; let i = index"
+          [@fadeInAnimation]
+        >
+          <div class="row g-0">
+            <div class="col-md-4">
+              <!-- Product Image -->
+              <img [src]="product.image" class="card-img rounded-start" alt="{{ product.name }}" />
+            </div>
+            <div class="col-md-8 theme-color">
+              <div class="card-body d-flex flex-column justify-content-between ">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text text-muted"> <span class="theme-color-text" style="font-weight: bolder;">Price - </span>RS - {{ product.price }}</p>
+                <p class="card-text text-muted"><span class="theme-color-text" style="font-weight: bolder;">Size -</span> {{ product.size }}</p>
+                <p class="card-text"><span class="theme-color-text" style="font-weight: bolder;">Quantity - </span> {{ product.quantity }}</p>
+                <p class="card-text"><span class="theme-color-text" style="font-weight: bolder;">Color -</span> {{ product.color }}</p>
+                <button
+                  class="btn theme-color-button btn-sm shadow-sm remove-btn"
+                  (click)="removeFromCart(product)"
+                  [@slideOutAnimation]
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Summary Section -->
+    <div class="col-lg-5 col-12" *ngIf="totalPrice>0">
+      <div class="card shadow-sm border-0">
+        <div class="card-body theme-color">
+          <h5 class="card-title fw-bold">Order Summary</h5>
+          <p class="card-text">Total Items: {{ totalItems }}</p>
+          <p class="card-text">Total Price: RS - {{ totalPrice }}</p>
+          <button
+            class="btn btn-primary btn-block shadow-sm fw-bold theme-color-button"
+            [disabled]="totalPrice==0"
+            (click)="navigateWithObject()"
+          >
+            Proceed to Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Show Empty Message When Orders Are Empty -->
+    <div  class="text-center py-5" *ngIf="totalPrice==0 && totalItems == 0 ">
+      <i class="fas fa-box-open fa-3x text-muted mb-3"></i>
+      <h5 class="text-muted" style="font-family: 'Poppins', sans-serif;">
+          Your card is empty!
+      </h5>
+  </div>
+
+  
+  
+</div>
+

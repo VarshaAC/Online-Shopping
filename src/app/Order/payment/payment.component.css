@@ -1,0 +1,48 @@
+/* Custom Styling for Input Fields */
+.form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .input-group-text {
+    background-color: var(--primary-color) !important;;
+    color: white;
+    padding-right: 0.5rem; /* Add space between icon and input */
+  }
+  
+  .input-group-text i {
+    font-size: 1.2rem;
+    margin-right: 10px; /* Add space between the icon and the border */
+  }
+  
+  .form-control {
+    border-radius: 0.375rem;
+  }
+  
+  .is-invalid {
+    border-color: #e3342f;
+  }
+  
+  .text-danger {
+    font-size: 0.875rem;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 1rem;
+    }
+    
+    .col-lg-5 {
+      max-width: 100%;
+    }
+    
+    .card {
+      margin-top: 1rem;
+    }
+  }
+  
+
+  .theme-color {
+    background-color: var(--primary-color) !important; /* Default color */
+    color: white;
+}

@@ -1,0 +1,118 @@
+
+/* Styling for rounded images */
+img.rounded-circle {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    cursor: pointer; /* Add pointer cursor for clickable elements */
+  }
+  
+  /* Centering text */
+  .text-center h5,
+  .text-center h6 {
+    margin: 0;
+    color: #333;
+  }
+  
+  /* Optional: Add hover effect */
+  .text-center:hover img {
+    transform: scale(1.1);
+    transition: 0.3s ease-in-out;
+  }
+  
+
+  /* Optional: Customize spacing for mobile */
+.text-center {
+    margin-bottom: 10px; /* Adjust vertical space between items */
+  }
+  
+  .row {
+    margin-left: 0; /* Remove unwanted padding */
+    margin-right: 0;
+  }
+
+  .border-with-padding {
+    border: 2px; /* Set border color and thickness */
+    background: linear-gradient(0deg, rgba(34,195,158,1) 0%, rgba(219,45,253,1) 100%);
+    padding: 2px;           /* Space between the image and border */
+    border-radius: 50%;      /* Optional: makes the border rounded (for circular images) */
+  }
+
+  /* Default image size */
+.img-responsive {
+    width: 100%;
+    max-width: 200px; /* Default max-width */
+  }
+  
+  /* Smaller images for mobile devices */
+  @media (max-width: 767px) {
+    .img-responsive {
+      width: 80%;
+      max-width: 150px; /* Smaller max-width for mobile */
+    }
+    .theme-color-text {
+        font-size: 10px !important;
+    }
+  }
+
+  @media (min-width: 1200px) { /* For large screens */
+    .row .col-md-3 {
+      padding: 5px; /* Reduce padding between columns */
+    }
+
+    .theme-color-text {
+        font-size: 15px !important;
+    }
+
+  }
+
+  .fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .theme-color-text {
+    color:  var(--primary-color) !important;
+    align-items: center;
+
+}
+
+.theme-color-text:hover {
+    color:  var(--primary-color) !important;
+    animation: pulse 0.6s ease; /* Apply pulse animation on hover */
+
+}
+
+  /* Keyframes for pulse animation */
+  @keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.active-category {
+    border-bottom: 2px solid #000; /* Underline */
+    font-weight: bold; /* Optional: Make text bold */
+    color: #000; /* Optional: Change color */
+  }
+
+
+  
+  
+  

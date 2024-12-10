@@ -1,0 +1,29 @@
+.theme-color {
+    background-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
+}
+
+.icon-theme-color {
+    color: var(--primary-color) !important;
+
+}
+
+  /* Keyframes for pulse animation */
+  @keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+.services-icon-wap:hover {
+    background-color: var(--secondary-color) !important; /* Default color */
+    animation: pulse 0.6s ease; /* Apply pulse animation on hover */
+
+}

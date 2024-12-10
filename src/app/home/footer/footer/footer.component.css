@@ -1,0 +1,38 @@
+.theme-color {
+    color: var(--secondary-color) !important;
+    background-color:  var(--primary-color) !important; ;
+}
+
+.x-mart-text:hover {
+    color: var(--secondary-color) !important;
+    animation: pulse 0.6s ease; /* Apply pulse animation on hover */
+
+}
+
+/* Hover styles */
+.theme-color-button:hover {
+    color:var(--secondary-color) !important; /* Change to black on hover */
+    animation: pulse 0.6s ease; /* Apply pulse animation on hover */
+}
+
+.theme-color-button {
+    background-color: var(--primary-color) !important; /* Default color */
+    animation: none; /* Initial animation state */
+    transition: color 0.3s ease; /* Transition for color */
+}
+
+.
+
+
+/* Keyframes for pulse animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

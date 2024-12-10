@@ -1,0 +1,152 @@
+/* Container Styling */
+.container {
+    max-width: 960px;
+    margin-top: 50px;
+  }
+  
+  /* Card Styling */
+  .card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Profile Image Styling */
+  .card-body img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Edit Button Styling */
+  .btn-outline-primary {
+    border-radius: 20px;
+    padding: 8px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .btn-outline-primary i {
+    font-size: 18px;
+  }
+  
+  /* List Group Item (User Info) Styling */
+  .list-group-item {
+    font-size: 16px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  /* Icons inside List */
+  .list-group-item i {
+    font-size: 18px;
+    color: #007bff;
+  }
+  
+  /* My Orders Button Styling */
+  .btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+  }
+  
+  .btn-outline-primary:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  
+  /* Heading Styles */
+  h3, h5 {
+    font-weight: 600;
+  }
+  
+  /* Card Body Styling */
+  .card-body {
+    padding: 30px;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 767px) {
+    .card-body img {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .btn-outline-primary {
+      width: 100%;
+      padding: 12px;
+    }
+  }
+
+
+  
+.theme-color-text {
+    color: var(--primary-color) !important;
+}
+
+.theme-color-secondary-text {
+    /* background-color: var(--secondary-color) !important; */
+    color: var(--primary-color) !important;
+}
+
+.theme-secondary-color-button {
+    background-color: var(--secondary-color) !important; /* Default color */
+    color: white;
+
+}
+
+.theme-secondary-color-button:hover {
+    background-color: var(--secondary-color) !important; /* Default color */
+    color: white;
+    animation: pulse 0.6s ease; /* Apply pulse animation on hover */
+
+}
+
+.theme-color-button {
+    background-color: var(--primary-color) !important; /* Default color */
+    color: white;
+    align-items: center;
+
+}
+
+.theme-color-button:hover {
+    background-color: var(--primary-color) !important; /* Default color */
+    color: white;
+    animation: pulse 0.6s ease; /* Apply pulse animation on hover */
+
+}
+
+.icon-color {
+    color: var(--primary-color) !important;
+
+}
+
+  /* Keyframes for pulse animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.button-outlin {
+    border-color: var(--primary-color) !important;
+
+
+}
+
+.button-outlin :hover {
+    background-color: var(--secondary-color) !important; /* Default color */
+    animation: pulse 0.6s ease; /* Apply pulse animation on hover */
+    border-color: var(--primary-color) !important;
+}
+  

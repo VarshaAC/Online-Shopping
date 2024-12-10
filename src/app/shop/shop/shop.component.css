@@ -1,0 +1,33 @@
+/* Height for medium screens and above */
+@media (min-width: 768px) {
+    .img-fluid-shop {
+        height: 250px !important; /* Adjust this value as needed for medium screens */
+    }
+}
+
+/* Height for large screens and above */
+@media (min-width: 992px) {
+    .img-fluid-shop {
+        height: 350px !important; /* Adjust this value as needed for large screens */
+    }
+}
+
+.img-fluid-shop{
+    /* min-height: 350px !important; */
+    height: 220px;
+}
+
+.theme-color {
+    color: var(--primary-color) !important;
+}
+
+.theme-color:hover {
+    color:  var(--secondary-color) !important;
+
+}
+
+.theme-color-button {
+    background-color: var(--primary-color) !important; /* Default color */
+    animation: none; /* Initial animation state */
+    transition: color 0.3s ease; /* Transition for color */
+}

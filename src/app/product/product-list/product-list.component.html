@@ -1,0 +1,45 @@
+<div class="row isotope-grid">
+    <div
+      class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item"
+      *ngFor="let product of products; let i = index"
+    >
+      <!-- Block2 -->
+      <div class="block2">
+        <div class="block2-pic hov-img0" (click)="navigateWithObject(product)">
+          <img [src]="product.imageUrl[0]" [alt]="product.title">
+          <div class="shop-now-text">Shop Now</div>
+        </div>
+        <div class="block2-txt flex-w flex-t p-t-14">
+          <div class="block2-txt-child1 flex-grow-1">
+            <a 
+              href="product-detail.html" 
+              class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6 nav-link" 
+              style="font-size: 8px;"
+            >
+              {{ product.title }}
+            </a>
+            <span class="stext-105 cl3 nav-link">
+              Rs - {{ product.price }}
+            </span>
+          </div>
+          <!-- Delete Icon -->
+          <div class="block2-txt-child2" *ngIf="userData && userData.isAdmin">
+            <i 
+              class="bi bi-trash cursor-pointer"
+              (click)="openConfirmationForDelete(product, i)"
+              style="font-size: 14px; color: #dc3545;" 
+            ></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Load More Button -->
+  <div class="d-flex justify-content-center mt-4">
+    <button class="btn d-flex align-items-center theme-color-button" (click)="loadMore()">
+      Load More
+      <i class="bi bi-arrow-down ms-2"></i>
+    </button>
+  </div>
+  

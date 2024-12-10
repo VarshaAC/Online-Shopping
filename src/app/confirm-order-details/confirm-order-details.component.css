@@ -1,0 +1,79 @@
+.card {
+    border-radius: 10px;
+  }
+  
+  /* Pending status */
+.badge-warning {
+    background-color: #ffc107; /* Yellow */
+    color: white;
+  }
+  
+  /* Processing status */
+  .badge-info {
+    background-color: #17a2b8; /* Blue */
+    color: white;
+  }
+  
+  /* Shipped status */
+  .badge-primary {
+    background-color: #007bff; /* Blue */
+    color: white;
+  }
+  
+  /* Delivered status */
+  .badge-success {
+    background-color: #28a745; /* Green */
+    color: white;
+  }
+  
+  /* Cancelled status */
+  .badge-danger {
+    background-color: #dc3545; /* Red */
+    color: white;
+  }
+  
+  /* Default fallback for unknown status */
+  .badge-secondary {
+    background-color: #6c757d; /* Gray */
+    color: white;
+  }
+  
+  
+  .table-hover tbody tr:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .img-thumbnail {
+    border-radius: 10%;
+    border: none;
+  }
+
+
+  .theme-color {
+    background-color: var(--primary-color) !important;
+  }
+  
+
+  .btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+select {
+    appearance: auto;
+    -webkit-appearance: auto; /* For Safari/Chrome */
+  }
+  
+
+select.custom-select {
+    /* background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23000" viewBox="0 0 4 5"><path d="M2 0L0 2h4z"/></svg>'); */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+  }
+  

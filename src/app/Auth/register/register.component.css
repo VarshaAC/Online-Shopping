@@ -1,0 +1,168 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    height: 100vh;
+  }
+  
+  .row {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1, h3 {
+    font-weight: 700;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  /* Left Side: Company Name */
+  .bg-primary {
+    background-color: #007bff !important;
+  }
+  
+  .bg-primary .display-6 {
+    font-size: 3rem;
+  }
+  
+  .bg-primary p {
+    font-size: 1.2rem;
+    margin-top: 15px;
+  }
+  
+  .bg-primary .rounded-start {
+    border-radius: 0.375rem 0 0 0.375rem;
+  }
+  
+  /* Right Side: Sign Up Form */
+  .bg-light {
+    background-color: #f8f9fa;
+    overflow-y: auto; /* Enable scrolling when content overflows */
+    max-height: 80vh; /* Prevent the form from overflowing the screen */
+  }
+  
+  .bg-light .form-label {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  
+  .form-control {
+    border-radius: 0.375rem;
+    border: 1px solid #ced4da;
+    box-shadow: none;
+  }
+  
+  .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.25rem rgba(38, 143, 255, 0.25);
+  }
+  
+  /* Sign Up Button */
+  .d-grid .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 12px 15px;
+    font-size: 1.1rem;
+    border-radius: 0.375rem;
+  }
+  
+  .d-grid .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+  
+  /* Link to Login Page */
+  .text-center a {
+    font-size: 1rem;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .text-center a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .row {
+      width: 100%;
+    }
+  
+    .col-md-6 {
+      padding: 15px;
+    }
+  
+    .bg-primary {
+      text-align: center;
+    }
+  
+    .bg-primary h1 {
+      font-size: 2rem;
+    }
+  
+    .bg-primary p {
+      font-size: 1rem;
+    }
+  }
+
+
+  .theme-color {
+    background-color: var(--primary-color) !important; /* Default color */
+    color: white;
+}
+
+.theme-color-text {
+    color: var(--primary-color) !important;
+}
+
+.theme-color-secondary-text {
+    /* background-color: var(--secondary-color) !important; */
+    color: var(--primary-color) !important;
+}
+
+.theme-secondary-color-button {
+    background-color: var(--secondary-color) !important; /* Default color */
+    color: white;
+
+}
+
+.theme-secondary-color-button:hover {
+    background-color: var(--secondary-color) !important; /* Default color */
+    color: white;
+    animation: pulse 0.6s ease; /* Apply pulse animation on hover */
+
+}
+
+.theme-color-button {
+    background-color: var(--primary-color) !important; /* Default color */
+    color: white;
+
+}
+
+.theme-color-button:hover {
+    background-color: var(--primary-color) !important; /* Default color */
+    color: white;
+    animation: pulse 0.6s ease; /* Apply pulse animation on hover */
+
+}
+
+  /* Keyframes for pulse animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+  

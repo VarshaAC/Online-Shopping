@@ -1,0 +1,26 @@
+<div class="d-flex flex-column"> <!-- Use flexbox and set height to 100% of viewport height -->
+    <div style="flex: 1;"> <!-- Allow content to grow and take up remaining space -->
+      <h2 mat-dialog-title>Delete product</h2>
+      <div mat-dialog-content>Are you aure want to delete product? </div>
+    </div>
+    <div mat-dialog-actions class="align-self-end"  > <!-- Align buttons to bottom -->
+      <span>
+        <button
+          type="button"
+          class="btn theme-color-button mr-2"
+          [mat-dialog-close]="true"
+          style="margin-right: 10px;"
+          (click)="CloseDialog(true)"
+        >
+          Delete
+        </button>
+        <button
+          type="button"
+          class="btn theme-color-button-outline"
+          (click)="CloseDialog(false)"
+        >
+          Cancel
+        </button>
+      </span>
+    </div>
+  </div>

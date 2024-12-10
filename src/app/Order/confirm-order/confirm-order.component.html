@@ -1,0 +1,208 @@
+<div class="container mt-5">
+    <div class="row">
+        <!-- Cart Items Section (Left Side) -->
+        <div class="col-sm-12 col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header theme-color text-white">
+                    <h4 class="mb-0"><i class="fas fa-shopping-cart"></i> Cart Items</h4>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Color</th>
+                                <th>Size</th>
+
+                                <th>Total</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of cartItems">
+                                <td>{{ item.name }}</td>
+                                <td>Rs: {{ item.price}}</td>
+                                <td>{{ item.quantity }}</td>
+                                <td>{{ item.color }}</td>
+                                <td>{{ item.size }}</td>
+                                <td>{{ item.quantity * item.price }}</td>
+                                <td>
+                                    <button class="btn btn-outline-primary btn-sm" (click)="viewOrderDetails(item.id)">
+                                        <i class="fas fa-eye"></i> View
+                                      </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="card-footer text-end">
+                    <h5>Total: <strong>Rs: {{ calculateTotal()}}</strong></h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Form Section (Right Side) -->
+        <div class="col-sm-12 col-md-6 mb-4">
+            <div class="card shadow-sm d-flex flex-column">
+                <div class="card-header theme-color">
+                    <h4 class="mb-0"><i class="fas fa-address-card"></i> Customer Details</h4>
+                </div>
+                <div class="card-body flex-grow-1 scrollable-card-body">
+                    <!-- Template-driven form with template reference variable -->
+                    <form #orderForm="ngForm" (ngSubmit)="placeOrder(orderForm)">
+                        <!-- Name -->
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" id="name" class="form-control" required [(ngModel)]="customerDetails.name"
+                                name="name" #name="ngModel" [ngClass]="{
+                    'is-invalid': name.invalid && name.touched
+                  }" />
+                            <div *ngIf="name.invalid && name.touched" class="invalid-feedback">
+                                Name is required.
+                            </div>
+                        </div>
+
+
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" class="form-control" required
+                                [(ngModel)]="customerDetails.email" name="email" #email="ngModel" [ngClass]="{
+        'is-invalid': email.invalid && email.touched
+      }" />
+                            <div *ngIf="email.invalid && email.touched" class="invalid-feedback">
+                                Please enter a valid email.
+                            </div>
+                        </div>
+
+                        <!-- Street Address -->
+                        <div class="mb-3">
+                            <label for="streetAddress" class="form-label">Street Address</label>
+                            <textarea id="streetAddress" class="form-control" rows="2" required
+                                [(ngModel)]="customerDetails.streetAddress" name="streetAddress" #streetAddress="ngModel"
+                                [ngClass]="{
+        'is-invalid': streetAddress.invalid && streetAddress.touched
+      }"></textarea>
+                            <div *ngIf="streetAddress.invalid && streetAddress.touched" class="invalid-feedback">
+                                Street address is required.
+                            </div>
+                        </div>
+
+                        <!-- Postal Code -->
+                        <div class="mb-3">
+                            <label for="postalCode" class="form-label">Postal Code</label>
+                            <input type="text" id="postalCode" class="form-control" required
+                                [(ngModel)]="customerDetails.postalCode" name="postalCode" #postalCode="ngModel" [ngClass]="{
+        'is-invalid': postalCode.invalid && postalCode.touched
+      }" />
+                            <div *ngIf="postalCode.invalid && postalCode.touched" class="invalid-feedback">
+                                Postal code is required.
+                            </div>
+                        </div>
+
+                        <!-- City -->
+                        <div class="mb-3">
+                            <label for="city" class="form-label">City</label>
+                            <input type="text" id="city" class="form-control" required [(ngModel)]="customerDetails.city"
+                                name="city" #city="ngModel" [ngClass]="{
+        'is-invalid': city.invalid && city.touched
+      }" />
+                            <div *ngIf="city.invalid && city.touched" class="invalid-feedback">
+                                City is required.
+                            </div>
+                        </div>
+
+                        <!-- Province/State -->
+                        <div class="mb-3">
+                            <label for="province" class="form-label">Province/State</label>
+                            <input type="text" id="province" class="form-control" required
+                                [(ngModel)]="customerDetails.province" name="province" #province="ngModel" [ngClass]="{
+        'is-invalid': province.invalid && province.touched
+      }" />
+                            <div *ngIf="province.invalid && province.touched" class="invalid-feedback">
+                                Province/State is required.
+                            </div>
+                        </div>
+
+                        <!-- Country -->
+                        <div class="mb-3">
+                            <label for="country" class="form-label">Country</label>
+                            <input type="text" id="country" class="form-control" required
+                                [(ngModel)]="customerDetails.country" name="country" #country="ngModel" [ngClass]="{
+        'is-invalid': country.invalid && country.touched
+      }" />
+                            <div *ngIf="country.invalid && country.touched" class="invalid-feedback">
+                                Country is required.
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" required [(ngModel)]="customerDetails.phone"
+                                name="phone" #phone="ngModel" [ngClass]="{
+        'is-invalid': phone.invalid && phone.touched
+      }" />
+                            <div *ngIf="phone.invalid && phone.touched" class="invalid-feedback">
+                                Phone number is required.
+                            </div>
+                        </div>
+
+                        <!-- Payment Method Selection -->
+                        <div class="mb-3">
+                            <label class="form-label">Select Payment Method</label>
+
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="creditCard" name="paymentMethod"
+                                    value="creditCard" [(ngModel)]="customerDetails.paymentMethod" required
+                                    #paymentMethod="ngModel" [ngClass]="{
+          'is-invalid': paymentMethod.invalid && paymentMethod.touched
+        }" />
+                                <label for="creditCard" class="form-check-label">Card</label>
+                            </div>
+
+                            <!-- <div class="form-check">
+      <input
+        type="radio"
+        class="form-check-input"
+        id="paypal"
+        name="paymentMethod"
+        value="paypal"
+        [(ngModel)]="orderDetails.paymentMethod"
+        required
+        #paymentMethod="ngModel"
+      />
+      <label for="paypal" class="form-check-label">PayPal</label>
+    </div>
+   -->
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="cash" name="paymentMethod" value="cash"
+                                    [(ngModel)]="customerDetails.paymentMethod" required #paymentMethod="ngModel" />
+                                <label for="cash" class="form-check-label">Cash on Delivery</label>
+                            </div>
+
+                            <div *ngIf="paymentMethod.invalid && paymentMethod.touched"
+                                class="invalid-feedback d-block">
+                                Please select a payment method.
+                            </div>
+                        </div>
+
+                      
+                        <!-- Fixed Place Order Button inside the form -->
+                        <div class="card-footer mt-auto">
+                            <button type="submit" class="btn theme-color w-100"
+                                [disabled]="cartItems?.length === 0 || orderForm.invalid">
+                                <i class="fas fa-check"></i> {{customerDetails.paymentMethod === 'creditCard' ? 'Pay Now'
+                                : 'Confirm Order' }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

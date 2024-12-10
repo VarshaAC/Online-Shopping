@@ -1,0 +1,39 @@
+
+
+
+  .theme-color-button {
+    background-color: var(--primary-color) !important; /* Default color */
+    color: white;
+    align-items: center;
+
+}
+
+.theme-color-button:hover {
+    background-color: var(--primary-color) !important; /* Default color */
+    color: white;
+    animation: pulse 0.6s ease; /* Apply pulse animation on hover */
+
+}
+
+.theme-color-button-outline{
+  border-color: var(--primary-color) !important; /* Default color */
+}
+
+.theme-color-button-outline:hover{
+  background-color: var(--secondary-color) !important; /* Default color */
+  animation: pulse 0.6s ease; /* Apply pulse animation on hover */
+
+}
+
+  /* Keyframes for pulse animation */
+  @keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

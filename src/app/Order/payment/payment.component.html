@@ -1,0 +1,77 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-5 col-md-8 col-sm-10">
+        <div class="card shadow-lg border-0 rounded-lg">
+          <div class="card-header theme-color text-white text-center">
+            <h4><i class="fas fa-credit-card"></i> Payment Details</h4>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="paymentForm" (ngSubmit)="processPayment()">
+              
+              <!-- Card Number -->
+              <div class="form-group position-relative">
+                <label for="cardNumber">Card Number</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-credit-card"></i></span>
+                  </div>
+                  <input type="text" id="cardNumber" formControlName="cardNumber" class="form-control" placeholder="1234 5678 9012 3456" [ngClass]="{'is-invalid': cardNumber?.invalid && cardNumber?.touched}" />
+                </div>
+                <div *ngIf="cardNumber?.invalid && cardNumber?.touched" class="text-danger small">
+                  Card number is required and must be 16 digits.
+                </div>
+              </div>
+              
+              <!-- Expiration Date -->
+              <div class="form-group position-relative">
+                <label for="expirationDate">Expiration Date (MM/YY)</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                  </div>
+                  <input type="text" id="expirationDate" formControlName="expirationDate" class="form-control" placeholder="MM/YY" [ngClass]="{'is-invalid': expirationDate?.invalid && expirationDate?.touched}" />
+                </div>
+                <div *ngIf="expirationDate?.invalid && expirationDate?.touched" class="text-danger small">
+                  Expiration date is required and must be in MM/YY format.
+                </div>
+              </div>
+              
+              <!-- CVV -->
+              <div class="form-group position-relative">
+                <label for="cvv">CVV</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                  </div>
+                  <input type="text" id="cvv" formControlName="cvv" class="form-control" placeholder="123" [ngClass]="{'is-invalid': cvv?.invalid && cvv?.touched}" />
+                </div>
+                <div *ngIf="cvv?.invalid && cvv?.touched" class="text-danger small">
+                  CVV is required and must be 3-4 digits.
+                </div>
+              </div>
+              
+              <!-- Cardholder Name -->
+              <div class="form-group position-relative">
+                <label for="cardHolderName">Cardholder Name</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                  </div>
+                  <input type="text" id="cardHolderName" formControlName="cardHolderName" class="form-control" placeholder="Full Name" [ngClass]="{'is-invalid': cardHolderName?.invalid && cardHolderName?.touched}" />
+                </div>
+                <div *ngIf="cardHolderName?.invalid && cardHolderName?.touched" class="text-danger small">
+                  Cardholder name is required and must be at least 2 characters.
+                </div>
+              </div>
+  
+              <!-- Submit Button -->
+              <button type="submit" class="btn theme-color btn-block mt-4" [disabled]="paymentForm.invalid">
+                <i class="fas fa-lock"></i> Pay Now
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

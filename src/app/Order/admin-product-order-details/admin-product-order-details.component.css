@@ -1,0 +1,105 @@
+
+
+.container {
+    max-width: 1200px;
+}
+
+.card {
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+/* Pending status */
+.badge-warning {
+    background-color: #ffc107; /* Yellow */
+    color: white;
+  }
+  
+  /* Processing status */
+  .badge-info {
+    background-color: #17a2b8; /* Blue */
+    color: white;
+  }
+  
+  /* Shipped status */
+  .badge-primary {
+    background-color: #007bff; /* Blue */
+    color: white;
+  }
+  
+  /* Delivered status */
+  .badge-success {
+    background-color: #28a745; /* Green */
+    color: white;
+  }
+  
+  /* Cancelled status */
+  .badge-danger {
+    background-color: #dc3545; /* Red */
+    color: white;
+  }
+  
+  /* Default fallback for unknown status */
+  .badge-secondary {
+    background-color: #6c757d; /* Gray */
+    color: white;
+  }
+  
+  
+.card-header {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--primary-color) !important; /* Use primary color */
+    color:var(--text-color) !important;; /* Text color */
+}
+
+.table {
+    margin: 0;
+}
+
+.table th,
+.table td {
+    vertical-align: middle;
+}
+
+.table thead th {
+    border-top: none;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f0f2f5;
+}
+
+.badge {
+    font-size: 0.8rem;
+    padding: 0.4em 0.6em;
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.theme-color {
+    color: #fff;;
+}
+
+@media (max-width: 768px) {
+    .card-header h3 {
+        font-size: 1.25rem;
+    }
+
+    .table {
+        font-size: 0.85rem;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}

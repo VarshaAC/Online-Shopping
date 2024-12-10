@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-md-6">
+      <ul class="list-inline shop-top-menu pb-3 pt-1">
+        <li class="list-inline-item">
+          <a 
+            class="h3 text-dark text-decoration-none mr-3 theme-color" 
+            [ngClass]="{'active-category': activeCategory === 'all'}" 
+            (click)="selectCategory('all')">
+            All
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a 
+            class="h3 text-dark text-decoration-none mr-3 theme-color" 
+            [ngClass]="{'active-category': activeCategory === 'men'}" 
+            (click)="selectCategory('men')">
+            Men
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a 
+            class="h3 text-dark text-decoration-none theme-color" 
+            [ngClass]="{'active-category': activeCategory === 'women'}" 
+            (click)="selectCategory('women')">
+            Women
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+
+<!-- Dynamic Row: Subcategories or Items -->
+<div class="row">
+<ng-container *ngIf="(isWomenCategoryClicked || isMenCategoryClicked) && !activeSubCategory">
+  <div class="col-3  col-sm-3 col-md-1 fade-in" *ngFor="let sub of subCategories">
+    <div class="text-center" (click)="selectSubCategory(sub)">
+      <img [src]="sub.image" alt="{{ sub.name }}" class="img-fluid rounded-circle mb-2 border-with-padding img-responsive" />
+      <p class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6 nav-link theme-color-text">{{ sub.name }}</p>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="activeSubCategory">
+  <div class="col-3 col-sm-3 col-md-1 fade-in" *ngFor="let item of items">
+    <div class="text-center" (click)="selectType(item)">
+      <img [src]="item.image" alt="{{ item.name }}" class="img-fluid rounded-circle mb-2 border-with-padding img-responsive" />
+      <p class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6 nav-link theme-color-text">{{ item.name }}</p>
+    </div>
+  </div>
+</ng-container>
+</div>

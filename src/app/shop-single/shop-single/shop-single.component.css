@@ -1,0 +1,79 @@
+/* Height for medium screens and above */
+@media (min-width: 768px) {
+    .img-fluid-3 {
+        height: 350px !important; /* Adjust this value as needed for medium screens */
+    }
+}
+
+/* Height for large screens and above */
+@media (min-width: 992px) {
+    .img-fluid-3 {
+        height: 500px !important; /* Adjust this value as needed for large screens */
+    }
+}
+
+.img-fluid-3{
+    /* min-height: 350px !important; */
+    height: 220px;
+}
+
+.theme-color {
+    color: var(--primary-color) !important;
+}
+
+.theme-color-button {
+    background-color: var(--primary-color) !important; /* Default color */
+    color: white;
+}
+
+/* Keyframes for pulse animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Hover styles */
+.theme-color-button:hover {
+    color:var(--secondary-color) !important; /* Change to black on hover */
+}
+
+.selected-size {
+    background-color:var(--secondary-color) !important; /* Change to desired background color */
+    color: white; /* Optional: Change text color for better visibility */
+  }
+  
+  .btn-size {
+    padding: 8px 16px; /* Optional: Adjust padding for size buttons */
+  }
+  
+
+  .img-fluid-shop{
+    /* min-height: 350px !important; */
+    height: 350px;
+}
+
+.btn-color {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0 5px;
+    border: 2px solid transparent;
+    display: inline-block;
+}
+
+.underline {
+    width: 100%;
+    height: 3px;
+    background-color: black; /* Line color */
+    position: absolute;
+    bottom: -8px; /* Adjust distance below the color */
+    left: 0;
+}

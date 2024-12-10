@@ -1,0 +1,151 @@
+/* products */
+
+
+
+/* General Styles */
+.row.isotope-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -15px;
+  }
+  
+  .isotope-item {
+    padding: 15px;
+  }
+  
+  /* Block2 Styles */
+  .block2 {
+    border: none;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .block2:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Product Image */
+  .block2-pic {
+    max-height: 300px; /* Set your desired max height */
+    overflow: hidden;  /* Ensures content doesn't overflow */
+  }
+
+  .block2-pic img {
+    max-height: 100%;  /* Ensure the image fits within the container */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+    width: 100%;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  
+  .block2:hover .block2-pic img {
+    transform: scale(1.1);
+  }
+  
+  /* Quick View Button */
+  .block2-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    background-color: #fff;
+    border: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .block2:hover .block2-btn {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  
+  /* Product Details */
+  .block2-txt {
+    padding: 15px;
+  }
+  
+  .block2-txt-child1 a {
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .block2-txt-child1 a:hover {
+    color: #f36;
+  }
+  
+  .block2-txt-child1 span {
+    font-size: 14px;
+    color: #999;
+    margin-top: 5px;
+    display: block;
+  }
+  
+  /* Wishlist Button */
+  .block2-txt-child2 .btn-addwish-b2 {
+    display: inline-block;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+  
+  .btn-addwish-b2 .icon-heart1 {
+    display: block;
+  }
+  
+  .btn-addwish-b2 .icon-heart2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+  }
+  
+  .btn-addwish-b2:hover .icon-heart1 {
+    display: none;
+  }
+  
+  .btn-addwish-b2:hover .icon-heart2 {
+    display: block;
+  }
+
+  .shop-now-text {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark background to make text readable */
+    padding: 10px 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+
+  .block2:hover .shop-now-text {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .theme-color-button {
+    background-color: var(--primary-color) !important; /* Default color */
+    color: white;
+
+}
+
+.theme-color-button:hover {
+    background-color: var(--primary-color) !important; /* Default color */
+    color: white;
+    animation: pulse 0.6s ease; /* Apply pulse animation on hover */
+
+}
