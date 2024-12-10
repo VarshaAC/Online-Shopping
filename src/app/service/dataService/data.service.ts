@@ -295,73 +295,97 @@ export class DataService {
     }
   }
 
-  getProducts(limit: number, lastDoc?: any, filters?: Record<string, any>, component?: string): Observable<any[]> {
+  getProducts(
+    limit: number,
+    lastDoc?: any,
+    filters?: Record<string, any>,
+    component?: string
+  ): Observable<any[]> {
     this.spinner.show(); // Show loader
-    return this.firestore.collection('products').doc('product').collection('product', ref => {
-      let queryRef = ref.limit(limit);
-      if (filters) {
-        Object.keys(filters).forEach((key: any) => {
-          const value: any = filters[key];
-          if (value !== '') {
-            queryRef = queryRef.where(key, '==', value);
-          }
-        });
+  
+    // Helper function to handle component-specific logic
+    const handleComponentLogic = (productsSnapshot: any, component: string) => {
+      const products = productsSnapshot.docs.map((doc: any) => doc.data());
+      const hasMoreSubject = this.getComponentHasMoreSubject(component);
+      const lastDocSubject = this.getComponentLastDocSubject(component);
+  
+      if (productsSnapshot.docs.length > 0) {
+        lastDoc = productsSnapshot.docs[productsSnapshot.docs.length - 1];
+        hasMoreSubject.next(true);
+      } else {
+        lastDoc = null;
+        hasMoreSubject.next(false);
+        this.toastr.info('No more products to load'); // Notify user
       }
-      if (lastDoc) {
-        queryRef = queryRef.startAfter(lastDoc);
-      }
-
-      return queryRef;
-    }).get({ source: 'server' }).pipe(
-      map((productsSnapshot: any) => {
-        const products = productsSnapshot.docs.map((doc: any) => doc.data());
-        if (component && component == "Main") {
-          if (productsSnapshot.docs.length > 0) {
-            lastDoc = productsSnapshot.docs[productsSnapshot.docs.length - 1]; // Update lastDoc
-            this.hasMoreMain.next(true);
-          } else {
-            lastDoc = null;
-            this.hasMoreMain.next(false);
-            this.toastr.info('No more products to load'); // Notify use
-          }
-          this.lastDocMain.next(lastDoc);
-          return products;
-        } else if (component && component == "Product-List") {
-          if (productsSnapshot.docs.length > 0) {
-            lastDoc = productsSnapshot.docs[productsSnapshot.docs.length - 1]; // Update lastDoc
-            this.hasMore.next(true);
-          } else {
-            lastDoc = null;
-            this.hasMore.next(false);
-            this.toastr.info('No more products to load'); // Notify use
-          }
-          this.lastDoc.next(lastDoc);
-          return products;
-        } else if (component && component == "Filter-List") {
-          if (productsSnapshot.docs.length > 0) {
-            lastDoc = productsSnapshot.docs[productsSnapshot.docs.length - 1]; // Update lastDoc
-            this.hasMoreFilter.next(true);
-          } else {
-            lastDoc = null;
-            this.hasMoreFilter.next(false);
-            this.toastr.info('No more products to load'); // Notify use
-          }
-          this.lastDocFilter.next(lastDoc);
-          return products;
+  
+      lastDocSubject.next(lastDoc);
+      return products;
+    };
+  
+    // Main Firestore query setup
+    return this.firestore
+      .collection('products')
+      .doc('product')
+      .collection('product', (ref) => {
+        let queryRef = ref.limit(limit);
+        if (filters) {
+          Object.entries(filters).forEach(([key, value]) => {
+            if (value !== '') {
+              queryRef = queryRef.where(key, '==', value);
+            }
+          });
         }
-
-      }),
-      catchError((error: Error) => {
-        this.toastr.error('Failed to load orders');
-        this.spinner.hide();
-        throw error;
-      }),
-      finalize(() => {
-        this.spinner.hide(); // Ensure spinner is hidden
+        if (lastDoc) {
+          queryRef = queryRef.startAfter(lastDoc);
+        }
+        return queryRef;
       })
-    );
+      .get({ source: 'server' })
+      .pipe(
+        map((productsSnapshot: any) => {
+          if (component) {
+            return handleComponentLogic(productsSnapshot, component);
+          }
+          return productsSnapshot.docs.map((doc: any) => doc.data());
+        }),
+        catchError((error: Error) => {
+          this.toastr.error('Failed to load products');
+          throw error;
+        }),
+        finalize(() => {
+          this.spinner.hide(); // Ensure spinner is hidden
+        })
+      );
   }
-
+  
+  // Helper method to get the correct subject for "hasMore"
+  private getComponentHasMoreSubject(component: string): BehaviorSubject<boolean> {
+    switch (component) {
+      case 'Main':
+        return this.hasMoreMain;
+      case 'Product-List':
+        return this.hasMore;
+      case 'Filter-List':
+        return this.hasMoreFilter;
+      default:
+        throw new Error('Invalid component');
+    }
+  }
+  
+  // Helper method to get the correct subject for "lastDoc"
+  private getComponentLastDocSubject(component: string): BehaviorSubject<any> {
+    switch (component) {
+      case 'Main':
+        return this.lastDocMain;
+      case 'Product-List':
+        return this.lastDoc;
+      case 'Filter-List':
+        return this.lastDocFilter;
+      default:
+        throw new Error('Invalid component');
+    }
+  }
+  
 
 
   async getOrdersByUserId(userId: string) {
