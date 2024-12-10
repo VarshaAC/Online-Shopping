@@ -134,35 +134,7 @@ export class DataService {
     this.productsDataCache = [];
   }
 
-  // setEmailTocustomer(orderId: any, customer: any, card: any) {
-  //   const functions = require("firebase-functions");
-  //   const nodemailer = require("nodemailer");
 
-  //   // Configure email transporter
-  //   const transporter = nodemailer.createTransport({
-  //     service: 'gmail', // Use your email provider
-  //     auth: {
-  //       user: 'your-email@gmail.com', // Replace with your email
-  //       pass: 'your-email-password'  // Replace with your email password or app password
-  //     }
-  //   });
-
-  //   // Trigger function on order confirmation
-
-  //       const mailOptions = {
-  //         from: 'your-email@gmail.com',
-  //         to: customer.email,
-  //         subject: `Order Confirmation - Order #${orderId}`,
-  //         text: `Dear ${customer.name},\n\nThank you for your order!\n\nOrder Details:\n${JSON.stringify(card, null, 2)}`
-  //       };
-
-  //       // Send email
-  //       return transporter.sendMail(mailOptions)
-  //         .then(() => console.log('Order confirmation email sent.'))
-  //         .catch((error: any) => console.error('Error sending email:', error));
-
-
-  // }
 
   async getShopContact() {
     this.spinner.show(); // Show loader
