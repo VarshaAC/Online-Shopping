@@ -550,7 +550,6 @@ export class DataService {
 
 
     } catch (error) {
-      console.error('Error in getCustomerCardProducts:', error);
       this.spinner.hide();
       return []; // Return an empty array in case of any other error
     }
@@ -590,7 +589,6 @@ export class DataService {
         return []; // Return an empty array if the user is not logged in
       }
     } catch (error) {
-      console.error('Error in getCustomerCardProducts:', error);
       this.spinner.hide();
       return []; // Return an empty array in case of any other error
     }
@@ -609,7 +607,6 @@ export class DataService {
       return product;
 
     } catch (error) {
-      console.error('Error fetching product:', error);
       this.toastr.warning('Product added to cart failed');
       this.spinner.hide();
       return null;
@@ -670,13 +667,11 @@ export class DataService {
 
         // Save the updated cart back to local storage
         localStorage.setItem('storedProducts', JSON.stringify(updatedCartItems));
-        console.log(`Product with ID ${product.productId} deleted from local storage.`);
         this.spinner.hide();
 
       }
 
     } catch (error) {
-      console.error('Error deleting product:', error);
       this.toastr.warning('Product  delete faild');
       this.spinner.hide();
 
@@ -702,7 +697,6 @@ export class DataService {
       this.spinner.hide();
       return productData;
     } catch (error) {
-      console.error('Error fetching Categories Data:', error);
       this.toastr.warning('Failed to load categories data');
       this.spinner.hide();
       return [];
